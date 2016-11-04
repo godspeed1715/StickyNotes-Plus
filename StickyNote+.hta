@@ -55,10 +55,10 @@
             var objShell = new ActiveXObject("WScript.Shell");
             try {
                 objShell.Run(filename); 
-            } catch() {
+            } catch(e) {
                 try {
                     objShell.Run(StickyNotesPlus.commandLine); 
-                } catch() {
+                } catch(e) {
                     alert('Error: Unable to start addtional StickyNotesPlus. Path Not Found.')
                 }
             }
