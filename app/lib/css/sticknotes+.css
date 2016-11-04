@@ -1,0 +1,111 @@
+document {
+    border: 2px solid #2B2B2D;
+}
+
+
+/*mustache Header*/
+
+.title-bar-os {
+    z-index: 11;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    height: 30px;
+    background: #2B2B2D;
+}
+
+.sn-logo {
+    color: rgba(200, 200, 200, 0.9);
+    font-size: .90em;
+    position: absolute;
+    left: 5px;
+}
+
+.btn-menu {
+    color: rgba(200, 200, 200, 0.9);
+    font-size: .90em;
+    position: absolute;
+    left: 25px;
+}
+/*Main styles*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background: #f8f8f8;
+}
+
+.sn-logo:hover {
+    color: #27ae60;
+}
+
+/*.btn-os styles*/
+.btn-os-group {
+    position: fixed;
+    top: 9px;
+}
+
+.btn-os-group i {
+    cursor: pointer;
+}
+
+.btn-os-min {
+    color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    right: 45px;
+}
+
+.btn-os-min:hover {
+    color: #f1c40f;
+}
+
+.btn-os-max {
+    color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    right: 28px;
+    font-size: .90em;
+}
+
+.btn-os-max:hover {
+    color: #27ae60;
+}
+
+.btn-os-close {
+    color: rgba(200, 200, 200, 0.9);
+    position: fixed;
+    right: 8px;
+    font-size: .90em;
+}
+
+.btn-os-close:hover {
+    color: #e74c3c;
+}
+
+.btn-os-resize {
+    position: fixed;
+    bottom: 2px;
+    right: 4px;
+    color: rgba(100, 100, 100, 0.9);
+}
+
+.btn-os-resize:hover {
+    cursor: nwse-resize;
+    color: #27ae60;
+}
+/*Textarea Styles*/
+..mustache-App {
+    width: 100%;
+    height: 100%;
+}
+textarea {
+    position: fixed;
+    top:31px;
+    bottom: 10px;
+    font: normal 14px verdana;
+    line-height: 25px;
+    padding: 2px 10px;
+    border: solid 1px #ddd;
+    width: 100%;
+}

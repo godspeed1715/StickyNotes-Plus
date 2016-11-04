@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <hta:application 
+    id="StickyNotesPlus"
+    applicationName="StickyNotesPlus" 
+    SYSMENU="yes"
+    SCROLL="no"
+    CAPTION="no" 
+    border="thin"
+    borderStyle="normal" 
+    contextMenu="yes" 
+    maximizeButton="yes" 
+    minimizeButton="yes" 
+    navigable="true" 
+    showInTaskbar="yes" 
+    singleInstance="no"  />
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+    <title>StickyNotes+</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./app/lib/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" href="./app/lib/css/bootswatch.min.css" />
+    <link rel="stylesheet" href="./app/lib/css/sticknotes+.css" />
+    <link rel="stylesheet" href="./app/lib/css/font-awesome.css" />
+</head>
+
+<body>
+    <!-- /splash-container -->
+    <div class="sticky-App">
+        <div class="title-bar-os">
+            <div class="dropdown">
+                <span class="btn-os-group">
+                    <i class="fa fa-plus sn-logo fa-sm"></i>
+                    <i class="fa fa-th-large fa-sm btn-menu"></i>
+                    <i class="fa fa-circle btn-os-close"></i>
+                </span>
+            </div>
+        </div>
+        <textarea class="main-textarea"></textarea>
+        <i class="fa fa-resize btn-os btn-os-resize"></i>
+    </div>
+    <!--/mustache-App-->
+    <script src="./app/lib/js/jquery-1.10.2.min.js"></script>
+    <script src="./app/lib/js/window-os.js"></script>
+    <script type="text/javascript">
+        //Set Document Title
+        document.title="Sticky Notes+"
+        //Set the textarea height to match the document size minus 31 for the title-bar-os element size.
+        $('textarea').css("height", $(document).height()-31);
+        //Adjust the document Height on resize.
+        $(window).resize(function() {
+            $('textarea').css("height", $(document).height()-31);
+        }) 
+        $('.sn-logo').click(function() {
+            var args = StickyNotesPlus.commandLine.split("\\");
+            var filename = args[args.length-1].replace("\"","")
+            var objShell = new ActiveXObject("WScript.Shell");
+            try {
+                objShell.Run(filename); 
+            } catch() {
+                try {
+                    objShell.Run(StickyNotesPlus.commandLine); 
+                } catch() {
+                    alert('Error: Unable to start addtional StickyNotesPlus. Path Not Found.')
+                }
+            }
+
+        })
+        //Textarea modifiers
+        $("textarea").keydown(function(e) {
+            if(e.keyCode === 9) { // tab was pressed
+                // get caret position/selection
+                var start = this.selectionStart;
+                var end = this.selectionEnd;
+                var $this = $(this);
+                var value = $this.val();
+                // set textarea value to: text before caret + tab + text after caret
+                $this.val(value.substring(0, start)
+                            + "\t"
+                            + value.substring(end));
+                // put caret at right position again (add one for the tab)
+                this.selectionStart = this.selectionEnd = start + 1;
+                // prevent the focus lose
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>
